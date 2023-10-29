@@ -33,6 +33,14 @@ const all = async () => {
     return await Person.findAll();
 }
 
+const destroy = async (id) => {
+    return await Person.destroy({
+        where: {
+            id
+        }
+    })
+}
+
 const sync = () => {
     Person.sync({force:true})
 }
@@ -40,5 +48,6 @@ const sync = () => {
 module.exports = {
     all,
     create,
+    destroy,
     sync
 }

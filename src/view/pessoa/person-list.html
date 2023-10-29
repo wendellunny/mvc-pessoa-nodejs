@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="row">
+            <div class="col-12"><a href="/persons/create" class="btn btn-primary">Novo</a></div>
             <div class="col-12">
                 <table class="table">
                     <thead>
@@ -19,17 +20,11 @@
                             <th>CPF</th>
                             <th>RG</th>
                             <th>Sexo</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="persons">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
+                    </tbody >
                 </table>
             </div>
         </div>
@@ -55,9 +50,23 @@
                     <td>${person.cpf}</td>
                     <td>${person.rg}</td>
                     <td>${person.gender}</td>
+                    <td>
+                        <button onclick="deletePerson(${person.id})">Deletar</button>
+                    </td>
                 </tr>
             `
         }).join('');
+    }
+
+    const deletePerson = async (id) => {
+        let res = confirm('Tem certeza que quer excluir esse registro?')
+        if(res) {
+            response = await fetch(`/persons/${id}/delete`, {method: "DELETE"})
+            console.log(await response.json())
+            window.location.reload();
+        } else {
+            alert('Exclusão cancelada');
+        }        
     }
 
     renderPersons();

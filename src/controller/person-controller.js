@@ -33,9 +33,15 @@ const store = async (req, res) => {
     res.redirect('/persons');
 }
 
+const destroy = async (req,res) => {
+    let deleteStatus = await person.destroy(req.params.id);
+    res.send({message: deleteStatus ? 'success' : 'fail'})
+}
+
 module.exports = {
     index,
     get,
     create,
-    store
+    store,
+    destroy
 }

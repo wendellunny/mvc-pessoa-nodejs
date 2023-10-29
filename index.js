@@ -18,4 +18,6 @@ app.get('/persons/create', personController.create);
 
 app.post('/persons/store', personController.store);
 
+app.delete('/persons/:id/delete', personController.destroy)
+
 app.listen(3000)
