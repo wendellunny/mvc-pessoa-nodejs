@@ -1,27 +1,23 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('app','root','secret', {
-    dialect: 'mysql',
-    host: 'mysql'
-})
+const db = require('./db')
 
-const Person = sequelize.define('persons', {
+const Person = db.sequelize.define('persons', {
     name: {
-        type: Sequelize.STRING
+        type: db.Sequelize.STRING
     },
     last_name: {
-        type: Sequelize.STRING
+        type: db.Sequelize.STRING
     },
     birth_date: {
-        type: Sequelize.STRING
+        type: db.Sequelize.STRING
     },
     cpf: {
-        type: Sequelize.STRING
+        type: db.Sequelize.STRING
     },
     rg: {
-        type: Sequelize.STRING
+        type: db.Sequelize.STRING
     },
     gender: {
-        type: Sequelize.STRING
+        type: db.Sequelize.STRING
     }
 });
 
